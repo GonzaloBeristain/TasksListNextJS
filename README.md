@@ -30,4 +30,4 @@ npx prisma studio
 
 ### Deploy on Vercel
 
-Deploy in process
+https://nextjs-prisma-crud-aypdhxxjm-gonzaloberistains-projects.vercel.app/
