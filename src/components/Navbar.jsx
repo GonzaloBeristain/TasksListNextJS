@@ -3,8 +3,8 @@ import Link from "next/link";
 export const Navbar = () => {
     return (
         <nav className="bg-slate-900">
-            <div className="container mx-auto flex justify-between items-center py-3">
-                <h3 className="font-bold text-3xl">
+            <div className="container mx-auto flex justify-between items-center py-3 px-2">
+                <h3 className="font-bold text-xl md:text-3xl">
                     <Link href="/">Next.JS - CRUD</Link>
                 </h3>
                 <ul className="flex gap-x-2 text-lg font-bold">

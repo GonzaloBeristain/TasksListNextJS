@@ -14,7 +14,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        {children}
+        <main className='h-[calc(100vh-7rem)]'>
+          {children}
+        </main>
+        
       </body>
     </html>
   )
