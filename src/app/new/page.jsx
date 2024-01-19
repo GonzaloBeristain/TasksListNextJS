@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const NewPage = ({ params }) => {
     const router = useRouter();
@@ -30,6 +31,12 @@ const NewPage = ({ params }) => {
                 },
             });
             const data = await res.json()
+
+            Swal.fire({
+                title: "Modify OK",
+                text: "Successfully modified task",
+                icon: "success",
+            });
         } else {
             const res = await fetch("/api/tasks", {
                 method: "POST",
@@ -39,6 +46,12 @@ const NewPage = ({ params }) => {
                 },
             });
             const data = await res.json()
+
+            Swal.fire({
+                title: "Create OK",
+                text: "Task created successfully",
+                icon: "success",
+            });
         };
         
         router.push('/')
@@ -67,7 +80,11 @@ const NewPage = ({ params }) => {
                 value={description}></textarea>
 
                 <div className="flex justify-between">
-                    <button type="submit" className="bg-blue-600 hover:bg-blue-800 font-bold text-white px-4 py-2 rounded">Crear</button>
+                {
+                    params.id ? <button type="submit" className="bg-blue-600 hover:bg-blue-800 font-bold text-white px-4 py-2 rounded">Modificar</button>
+                    : <button type="submit" className="bg-green-800 hover:bg-green-900 font-bold text-white px-4 py-2 rounded">Crear</button>
+                }
+                    
                 {
                     params.id && (
                         <button type="button" className="bg-red-500 hover:bg-red-700 font-bold text-white px-4 py-2 rounded"
@@ -76,7 +93,12 @@ const NewPage = ({ params }) => {
                                 method: 'DELETE',
                             })
                             const data = await res.json()
-                            console.log(data)
+                            Swal.fire({
+                                title: "Delete OK",
+                                text: "Task deleted successfully",
+                                icon: "success",
+                            });
+                            
                             router.back()
                             router.refresh()
                         }}>
